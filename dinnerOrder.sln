@@ -3,9 +3,59 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{33EB3636-8AA9-471C-9397-6715F9F8C42B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{31A10D35-8641-4A3B-9831-3A2C1480128E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dinnerOrder.Infrastructure", "dinnerOrder.Infrastructure\dinnerOrder.Infrastructure.csproj", "{2F61A1AC-4610-41A7-A3D6-047E778907A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dinnerOrder.Tests", "dinnerOrder.Tests\dinnerOrder.Tests.csproj", "{6B761474-6170-4A0F-B3FF-DDCDA01F3868}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D90F2E3B-77E2-4117-980D-EBC5F61822AA} = {D90F2E3B-77E2-4117-980D-EBC5F61822AA}
+		{2F61A1AC-4610-41A7-A3D6-047E778907A7} = {2F61A1AC-4610-41A7-A3D6-047E778907A7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dinnerOrder.Web", "dinnerOrder.Web\dinnerOrder.Web.csproj", "{D90F2E3B-77E2-4117-980D-EBC5F61822AA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2F61A1AC-4610-41A7-A3D6-047E778907A7} = {2F61A1AC-4610-41A7-A3D6-047E778907A7}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dinnerOrder.MainWeb", "dinnerOrder.MainWeb\dinnerOrder.MainWeb.csproj", "{9E3EAA19-CCB1-49EA-A6BB-A5759B31FF5A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2F61A1AC-4610-41A7-A3D6-047E778907A7} = {2F61A1AC-4610-41A7-A3D6-047E778907A7}
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F61A1AC-4610-41A7-A3D6-047E778907A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F61A1AC-4610-41A7-A3D6-047E778907A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F61A1AC-4610-41A7-A3D6-047E778907A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F61A1AC-4610-41A7-A3D6-047E778907A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B761474-6170-4A0F-B3FF-DDCDA01F3868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B761474-6170-4A0F-B3FF-DDCDA01F3868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B761474-6170-4A0F-B3FF-DDCDA01F3868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B761474-6170-4A0F-B3FF-DDCDA01F3868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D90F2E3B-77E2-4117-980D-EBC5F61822AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D90F2E3B-77E2-4117-980D-EBC5F61822AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D90F2E3B-77E2-4117-980D-EBC5F61822AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D90F2E3B-77E2-4117-980D-EBC5F61822AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E3EAA19-CCB1-49EA-A6BB-A5759B31FF5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E3EAA19-CCB1-49EA-A6BB-A5759B31FF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E3EAA19-CCB1-49EA-A6BB-A5759B31FF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E3EAA19-CCB1-49EA-A6BB-A5759B31FF5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2F61A1AC-4610-41A7-A3D6-047E778907A7} = {33EB3636-8AA9-471C-9397-6715F9F8C42B}
+		{6B761474-6170-4A0F-B3FF-DDCDA01F3868} = {31A10D35-8641-4A3B-9831-3A2C1480128E}
+		{D90F2E3B-77E2-4117-980D-EBC5F61822AA} = {33EB3636-8AA9-471C-9397-6715F9F8C42B}
+		{9E3EAA19-CCB1-49EA-A6BB-A5759B31FF5A} = {33EB3636-8AA9-471C-9397-6715F9F8C42B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE9D9CA8-7F05-4063-B078-04D8916A8726}
