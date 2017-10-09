@@ -18,11 +18,10 @@ namespace dinnerOrder.Infrastructure.Entities
             return new ApplicationDbContext();
         }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Configurations.Add(new UsersConfiguration());
-        //    modelBuilder.Configurations.Add(new OrdersConfiguration());
-        //    modelBuilder.Configurations.Add(new RestaurantsConfiguration());
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Configurations.Add(new UserConfiguration());
+        }
     }
 }

@@ -71,13 +71,23 @@
     <Compile Include="Entities\ApplicationDbContext.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Order.cs" />
-    <Compile Include="Entities\OrdersConfiguration.cs" />
+    <Compile Include="Entities\UserConfiguration.cs" />
     <Compile Include="Entities\Restaurant.cs" />
-    <Compile Include="Entities\RestaurantsConfiguration.cs" />
-    <Compile Include="Entities\UsersConfiguration.cs" />
     <Compile Include="Migrations\201710051055548_InitialMigration.cs" />
     <Compile Include="Migrations\201710051055548_InitialMigration.Designer.cs">
       <DependentUpon>201710051055548_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710090742095_Dependencies.cs" />
+    <Compile Include="Migrations\201710090742095_Dependencies.Designer.cs">
+      <DependentUpon>201710090742095_Dependencies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710090759195_newdependencies.cs" />
+    <Compile Include="Migrations\201710090759195_newdependencies.Designer.cs">
+      <DependentUpon>201710090759195_newdependencies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710090816294_aspnetusers.cs" />
+    <Compile Include="Migrations\201710090816294_aspnetusers.Designer.cs">
+      <DependentUpon>201710090816294_aspnetusers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\AutofacModule.cs" />
@@ -98,6 +108,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710051055548_InitialMigration.resx">
       <DependentUpon>201710051055548_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710090742095_Dependencies.resx">
+      <DependentUpon>201710090742095_Dependencies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710090759195_newdependencies.resx">
+      <DependentUpon>201710090759195_newdependencies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710090816294_aspnetusers.resx">
+      <DependentUpon>201710090816294_aspnetusers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

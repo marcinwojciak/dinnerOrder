@@ -8,7 +8,7 @@ namespace dinnerOrder.Infrastructure.Entities
 {
     public class ApplicationUser : IdentityUser
     {
-        //public virtual ICollection<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

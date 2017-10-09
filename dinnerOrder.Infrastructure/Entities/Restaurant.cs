@@ -15,6 +15,6 @@ namespace dinnerOrder.Infrastructure.Entities
         public Guid RestaurantId { get; set; }
         public string Name { get; set; }
 
-        //public virtual ICollection<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }
