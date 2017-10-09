@@ -4,15 +4,15 @@
 
 <div ng-controller="HomeController">
     <h1>{{message}}</h1>
-    <div>
-        <input ng-model="data" type="text" name="name" value="" />
-        <button class="btn btn-primary" ng-click="getDataTest()">Wyświetl restauracje</button>
-    </div>
-    <div style="margin-top: 40px;">
+
+    <button class="btn btn-success" ng-click="addingNewRestaurant()">Dodaj nową restauracje</button>
+    <div ng-if="addedRestaurant" style="margin-top: 40px;">
         <input ng-model="name" type="text" name="name" value="" />
         <button class="btn btn-primary" ng-click="addDataTest()">Zapisz restauracje</button>
     </div>
+
     <h2>{{data}}</h2>
+
     <table ng-init="getDataFromDb()" class="table table-responsive table-striped">
         <tr ng-repeat="rest in restaurants">
             <td>{{ rest.Name }}</td>

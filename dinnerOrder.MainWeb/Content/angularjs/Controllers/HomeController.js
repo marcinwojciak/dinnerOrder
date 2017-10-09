@@ -1,6 +1,7 @@
 ﻿app.controller("HomeController", function ($scope, $http) {
-    $scope.message = "Hello World";
+    $scope.message = "Herzlich Willkommen";
     $scope.restaurants = [];
+    $scope.addedRestaurant = false;
 
     $scope.getDataTest = function () {
         $http({
@@ -37,5 +38,9 @@
             }
         }, function errorCallback(response) {
         });
+    };
+
+    $scope.addingNewRestaurant = function () {
+        $scope.addedRestaurant = !$scope.addedRestaurant;
     };
 });
