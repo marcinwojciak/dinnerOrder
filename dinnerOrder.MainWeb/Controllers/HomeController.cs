@@ -34,7 +34,6 @@ namespace dinnerOrder.MainWeb.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public JsonResult AddRestaurant(RestaurantViewModel model)
         {
             string output = "Error";

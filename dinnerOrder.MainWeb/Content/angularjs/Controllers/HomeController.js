@@ -33,10 +33,11 @@
             data: JSON.stringify(model),
         }).then(function successCallback(response) {
             console.log(response);
-            if (response.data = 'success') {
+            if (response.data === 'Success') {
                 alert("Dodano pomyślnie restaurację: " + $scope.name);
             }
-        }, function errorCallback(response) {
+            else {alert("Nie dodano restauracji: " + response.data);}
+            }, function errorCallback(response) {
         });
     };
 

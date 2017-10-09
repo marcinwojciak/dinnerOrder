@@ -6,7 +6,7 @@
     <h1>{{message}}</h1>
 
     <button class="btn btn-success" ng-click="addingNewRestaurant()">Dodaj nową restauracje</button>
-    <div ng-if="addedRestaurant" style="margin-top: 40px;">
+    <div ng-show="addedRestaurant" style="margin-top: 40px;">
         <input ng-model="name" type="text" name="name" value="" />
         <button class="btn btn-primary" ng-click="addDataTest()">Zapisz restauracje</button>
     </div>

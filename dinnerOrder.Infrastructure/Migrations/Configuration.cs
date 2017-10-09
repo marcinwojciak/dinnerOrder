@@ -16,10 +16,10 @@ namespace dinnerOrder.Infrastructure.Migrations
         protected override void Seed(ApplicationDbContext context)
         {
             context.Restaurants.AddOrUpdate(
-                x => x.RestaurantId,
-                new Restaurant { RestaurantId = Guid.NewGuid(), Name = "Restaurant1"},
-                new Restaurant { RestaurantId = Guid.NewGuid(), Name = "Restaurant2" },
-                new Restaurant { RestaurantId = Guid.NewGuid(), Name = "Restaurant3" }
+                x => x.Name,
+                new Restaurant { Name = "Restaurant1" },
+                new Restaurant { Name = "Restaurant2" },
+                new Restaurant { Name = "Restaurant3" }
                 );
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
