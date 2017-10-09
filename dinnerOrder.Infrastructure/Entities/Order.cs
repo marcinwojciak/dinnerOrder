@@ -14,10 +14,8 @@ namespace dinnerOrder.Infrastructure.Entities
         [Key]
         public Guid OrderId { get; set; }
         public DateTime? DateOfOrder { get; set; }
-
         public Guid RestaurantId { get; set; }
         public virtual Restaurant Restaurant { get; set; }
-
         public string ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }

@@ -18,7 +18,7 @@
             method: 'GET',
             url: '/Home/GetAllRestaurants',
         }).then(function successCallback(response) {
-            $scope.restaurants = response.data;
+            $scope.restaurants = response.data.restaurants;
             }, function errorCallback(response) {
                 alert('Data not found'); 
         });
@@ -38,6 +38,23 @@
             }
             else {alert("Nie dodano restauracji: " + response.data);}
             }, function errorCallback(response) {
+        });
+    };
+
+    $scope.addNewOrder = function (restId) {
+        var model = { model: { RestaurantId: restId } };
+        console.log(model);
+        $http({
+            method: 'POST',
+            url: '/Home/AddNewOrder',
+            data: JSON.stringify(model),
+        }).then(function successCallback(response) {
+            console.log(response);
+            if (response.data === 'Success') {
+                alert("Dodano pomyślnie zamówienie. Dziękujemy");
+            }
+            else { alert("Nie dodano zamówienia: " + response.data); }
+        }, function errorCallback(response) {
         });
     };
 

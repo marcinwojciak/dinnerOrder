@@ -89,15 +89,29 @@
     <Compile Include="Migrations\201710090816294_aspnetusers.Designer.cs">
       <DependentUpon>201710090816294_aspnetusers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710091108028_neworderproperty.cs" />
+    <Compile Include="Migrations\201710091108028_neworderproperty.Designer.cs">
+      <DependentUpon>201710091108028_neworderproperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710091323051_norestname.cs" />
+    <Compile Include="Migrations\201710091323051_norestname.Designer.cs">
+      <DependentUpon>201710091323051_norestname.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\AutofacModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IOrderRepository.cs" />
     <Compile Include="Repositories\IRestaurantRepository.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\RestaurantRepository.cs" />
+    <Compile Include="Services\IOrderService.cs" />
     <Compile Include="Services\IRestaurantService.cs" />
+    <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\RestaurantService.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
+    <Compile Include="ViewModels\OrderViewModel.cs" />
+    <Compile Include="ViewModels\RestaurantExtendedViewModel.cs" />
     <Compile Include="ViewModels\RestaurantViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +131,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710090816294_aspnetusers.resx">
       <DependentUpon>201710090816294_aspnetusers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091108028_neworderproperty.resx">
+      <DependentUpon>201710091108028_neworderproperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710091323051_norestname.resx">
+      <DependentUpon>201710091323051_norestname.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

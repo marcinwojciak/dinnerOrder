@@ -5,18 +5,25 @@
 <div ng-controller="HomeController">
     <h1>{{message}}</h1>
 
-    <button class="btn btn-success" ng-click="addingNewRestaurant()">Dodaj nową restauracje</button>
-    <div ng-show="addedRestaurant" style="margin-top: 40px;">
-        <input ng-model="name" type="text" name="name" value="" />
-        <button class="btn btn-primary" ng-click="addDataTest()">Zapisz restauracje</button>
-    </div>
+
+        <form name="addRestaurantForm">
+            <button class="btn btn-success" ng-click="addingNewRestaurant()">Dodaj nową restauracje</button>
+            <div ng-show="addedRestaurant" style="margin-top: 40px;">
+                <input ng-model="name" type="text" name="addName" value="" ng-minlength="5" required/>
+                <button class="btn btn-primary" ng-click="addDataTest()">Zapisz restauracje</button>
+                <code>{{addRestaurantForm.addName.$valid}}</code>
+            </div>
+        </form>
+    
+
 
     <h2>{{data}}</h2>
 
     <table ng-init="getDataFromDb()" class="table table-responsive table-striped">
         <tr ng-repeat="rest in restaurants">
             <td>{{ rest.Name }}</td>
-            <td><a href="#" class="btn btn-sm btn-primary">Vote</a></td>
+            <td>{{ rest.RestaurantId }}</td>
+            <td><a href="#" class="btn btn-sm btn-primary" ng-click="addNewOrder(rest.RestaurantId)">Vote</a></td>
         </tr>
     </table>
 </div>

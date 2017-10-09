@@ -1,5 +1,6 @@
 ﻿using dinnerOrder.Infrastructure.Services;
 using dinnerOrder.Infrastructure.ViewModels;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -8,10 +9,12 @@ namespace dinnerOrder.MainWeb.Controllers
     public class HomeController : Controller
     {
         private IRestaurantService _restaurantService;
+        private IOrderService _orderService;
 
-        public HomeController(IRestaurantService restaurantService)
+        public HomeController(IRestaurantService restaurantService, IOrderService orderService)
         {
             _restaurantService = restaurantService;
+            _orderService = orderService;
         }
 
         public ActionResult Index()
@@ -26,11 +29,12 @@ namespace dinnerOrder.MainWeb.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GetAllRestaurants()
+        public JsonResult GetRestaurantsViewModel()
         {
-            var result = _restaurantService.GetAllAsync();
+            RestaurantExtendedViewModel exModel = new RestaurantExtendedViewModel();
+            exModel.Restaurants = _restaurantService.GetAllAsync();
 
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return Json(exModel, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -41,6 +45,24 @@ namespace dinnerOrder.MainWeb.Controllers
             if (ModelState.IsValid)
             {    
                 Task<bool> result = _restaurantService.AddAsync(model);
+                if (result.Result)
+                {
+                    output = "Success";
+                }
+            }
+
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult AddNewOrder(OrderViewModel model)
+        {
+            string output = "Error";
+            model.Username = User.Identity.Name;
+
+            if (ModelState.IsValid)
+            {
+                Task<bool> result = _orderService.AddAsync(model);
                 if (result.Result)
                 {
                     output = "Success";
