@@ -17,8 +17,9 @@
             method: 'GET',
             url: '/Home/GetAllRestaurants',
         }).then(function successCallback(response) {
-            console.log(response);
-        }, function errorCallback(response) {
+            $scope.restaurants = response.data;
+            }, function errorCallback(response) {
+                alert('Data not found'); 
         });
     };
 

@@ -21,8 +21,11 @@ namespace dinnerOrder.Infrastructure.Repositories
         public async Task<IEnumerable<Restaurant>> FindBy(Func<Restaurant, bool> predicate)
             => await Task.FromResult(_context.Restaurants.Where(predicate));
 
-        public async Task<IEnumerable<Restaurant>> GetAllAsync()
-            => await _context.Restaurants.ToListAsync();
+        public IEnumerable<Restaurant> GetAllAsync()
+        {
+            return _context.Restaurants.ToList();
+        }
+        
 
         public async Task<Restaurant> GetSingleAsync(string name)
             => await Task.FromResult(_context.Restaurants.SingleOrDefault(x => x.Name == name));

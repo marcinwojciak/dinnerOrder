@@ -10,7 +10,7 @@ namespace dinnerOrder.Infrastructure.Services
 {
     public interface IRestaurantService
     {
-        Task<IEnumerable<RestaurantViewModel>> GetAllAsync();
+        IEnumerable<RestaurantViewModel> GetAllAsync();
         Task<RestaurantViewModel> GetSingleAsync(string name);
         Task<bool> AddAsync(RestaurantViewModel model);
     }

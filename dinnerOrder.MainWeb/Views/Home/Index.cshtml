@@ -13,6 +13,12 @@
         <button class="btn btn-primary" ng-click="addDataTest()">Zapisz restauracje</button>
     </div>
     <h2>{{data}}</h2>
+    <table ng-init="getDataFromDb()" class="table table-responsive table-striped">
+        <tr ng-repeat="rest in restaurants">
+            <td>{{ rest.Name }}</td>
+            <td><a href="#" class="btn btn-sm btn-primary">Vote</a></td>
+        </tr>
+    </table>
 </div>
 
 

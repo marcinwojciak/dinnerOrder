@@ -25,9 +25,9 @@ namespace dinnerOrder.Infrastructure.Services
             return await _restaurantRepository.AddAsync(restaurant);
         }
 
-        public async Task<IEnumerable<RestaurantViewModel>> GetAllAsync()
+        public IEnumerable<RestaurantViewModel> GetAllAsync()
         {
-            var restaurants = await _restaurantRepository.GetAllAsync();
+            var restaurants = _restaurantRepository.GetAllAsync();
 
             return _mapper.Map<IEnumerable<Restaurant>, IEnumerable<RestaurantViewModel>>(restaurants);
         }

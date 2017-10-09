@@ -7,7 +7,7 @@ namespace dinnerOrder.Infrastructure.Repositories
 {
     public interface IRestaurantRepository
     {
-        Task<IEnumerable<Restaurant>> GetAllAsync();
+        IEnumerable<Restaurant> GetAllAsync();
         Task<Restaurant> GetSingleAsync(string name);
         Task<bool> AddAsync(Restaurant restaurant);
         Task<IEnumerable<Restaurant>> FindBy(Func<Restaurant, bool> predicate);
