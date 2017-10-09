@@ -30,6 +30,13 @@ namespace dinnerOrder.Infrastructure.Services
 
             return await _orderRepository.AddAsync(order);
         }
+
+        public bool CheckIfUserCanVote(string name)
+        {
+            //Metoda pobiera zamówienia z dzisiaj.
+            IQueryable<Order> ordersFromToday = _orderRepository.GetAllOrdersFromToday();
+            return true;                                        //.Where(x = x.ApplicationUserName == name);
+        }
     }
 }
 

@@ -10,7 +10,9 @@ namespace dinnerOrder.Infrastructure.Repositories
 {
     public interface IOrderRepository
     {
+        Task<Order> GetSingleAsync(Guid id);
         Task<bool> AddAsync(Order order);
         string GetUserIdFromUser(string name);
+        IQueryable<Order> GetAllOrdersFromToday();
     }
 }

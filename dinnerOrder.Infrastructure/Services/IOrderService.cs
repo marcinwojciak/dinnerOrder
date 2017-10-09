@@ -10,5 +10,6 @@ namespace dinnerOrder.Infrastructure.Services
     public interface IOrderService
     {
         Task<bool> AddAsync(OrderViewModel model);
+        bool CheckIfUserCanVote(string name);
     }
 }

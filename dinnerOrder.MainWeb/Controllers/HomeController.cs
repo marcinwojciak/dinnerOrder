@@ -33,7 +33,7 @@ namespace dinnerOrder.MainWeb.Controllers
         {
             RestaurantExtendedViewModel exModel = new RestaurantExtendedViewModel();
             exModel.Restaurants = _restaurantService.GetAllAsync();
-
+            //exModel.CanVote = _restaurantService.CheckIfUserCanVote(User.Identity.Name);
             return Json(exModel, JsonRequestBehavior.AllowGet);
         }
 
@@ -70,20 +70,6 @@ namespace dinnerOrder.MainWeb.Controllers
             }
 
             return Json(output, JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
         }
     }
 }

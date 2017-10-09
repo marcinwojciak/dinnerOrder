@@ -16,7 +16,7 @@
     $scope.getDataFromDb = function () {
         $http({
             method: 'GET',
-            url: '/Home/GetAllRestaurants',
+            url: '/Home/GetRestaurantsViewModel',
         }).then(function successCallback(response) {
             $scope.restaurants = response.data.restaurants;
             }, function errorCallback(response) {

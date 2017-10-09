@@ -5,6 +5,7 @@ using dinnerOrder.Infrastructure.Repositories;
 using dinnerOrder.Infrastructure.ViewModels;
 using AutoMapper;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace dinnerOrder.Infrastructure.Services
 {

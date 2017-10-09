@@ -18,6 +18,19 @@ namespace dinnerOrder.Infrastructure.Repositories
             return response >= 1 ? true : false;
         }
 
+        public IQueryable<Order> GetAllOrdersFromToday()
+        {
+            return _context.Orders
+                .Include("Restaurant")  //Include załaduje mi objekt restaurant mając pole RestaurantId.
+                .Where(x =>
+                    x.DateOfOrder.Value.Year == DateTime.Today.Year &&
+                    x.DateOfOrder.Value.Month == DateTime.Today.Month &&
+                    x.DateOfOrder.Value.Day == DateTime.Today.Day);
+        }
+
+        public async Task<Order> GetSingleAsync(Guid id)
+            => await Task.FromResult(_context.Orders.SingleOrDefault(x => x.OrderId == id));
+
         public string GetUserIdFromUser(string name)
         {
             return _context.Users.Where(x => x.UserName == name)
