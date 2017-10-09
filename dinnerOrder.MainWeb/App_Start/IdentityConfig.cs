@@ -10,7 +10,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using dinnerOrder.MainWeb.ViewModels;
 using dinnerOrder.Infrastructure.Entities;
 
 namespace dinnerOrder.MainWeb

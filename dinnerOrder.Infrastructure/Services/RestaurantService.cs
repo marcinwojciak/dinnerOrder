@@ -1,35 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using dinnerOrder.Infrastructure.Entities;
 using dinnerOrder.Infrastructure.Repositories;
+using dinnerOrder.Infrastructure.ViewModels;
+using AutoMapper;
+using System.Collections.Generic;
 
 namespace dinnerOrder.Infrastructure.Services
 {
     public class RestaurantService : IRestaurantService
     {
-        private readonly IRestaurantRepository _bookRepository;
-        //private readonly IMapper _mapper;
+        private readonly IRestaurantRepository _restaurantRepository;
+        private readonly IMapper _mapper;
 
-        public RestaurantService(IRestaurantRepository bookRepository)
+        public RestaurantService(IRestaurantRepository bookRepository, IMapper mapper)
         {
-            _bookRepository = bookRepository;
-        }
-        public Task AddAsync(Restaurant restaurant)
-        {
-            throw new NotImplementedException();
+            _restaurantRepository = bookRepository;
+            _mapper = mapper;
         }
 
-        public Task<IEnumerable<Restaurant>> FindBy(Func<Restaurant, bool> predicate)
+        public async Task<bool> AddAsync(RestaurantViewModel model)
         {
-            throw new NotImplementedException();
+            var restaurant = new Restaurant { RestaurantId = Guid.NewGuid(), Name = model.Name };
+            return await _restaurantRepository.AddAsync(restaurant);
         }
 
-        public Task<RestaurantViewModel> GetSingleAsync(string name)
+        public async Task<IEnumerable<RestaurantViewModel>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            var restaurants = await _restaurantRepository.GetAllAsync();
+
+            return _mapper.Map<IEnumerable<Restaurant>, IEnumerable<RestaurantViewModel>>(restaurants);
+        }
+
+        public async Task<RestaurantViewModel> GetSingleAsync(string name)
+        {
+            var restaurant = await _restaurantRepository.GetSingleAsync(name);
+
+            return _mapper.Map<Restaurant, RestaurantViewModel>(restaurant);
         }
     }
 }

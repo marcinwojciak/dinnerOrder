@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace dinnerOrder.MainWeb.ViewModels
+namespace dinnerOrder.Infrastructure.ViewModels
 {
     public class RestaurantViewModel
     {

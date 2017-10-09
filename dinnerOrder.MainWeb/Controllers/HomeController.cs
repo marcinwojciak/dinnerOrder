@@ -1,11 +1,19 @@
-﻿using dinnerOrder.Infrastructure.Repositories;
-using System;
+﻿using dinnerOrder.Infrastructure.Services;
+using dinnerOrder.Infrastructure.ViewModels;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace dinnerOrder.MainWeb.Controllers
 {
     public class HomeController : Controller
     {
+        private IRestaurantService _restaurantService;
+
+        public HomeController(IRestaurantService restaurantService)
+        {
+            _restaurantService = restaurantService;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -13,13 +21,33 @@ namespace dinnerOrder.MainWeb.Controllers
 
         public JsonResult GetTestRestaurants(string name)
         {
-            return Json(name + DateTime.Now, JsonRequestBehavior.AllowGet);
+            var result = _restaurantService.GetSingleAsync(name);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetAllRestaurants()
+        {
+            var result = _restaurantService.GetAllAsync();
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public JsonResult AddRestaurant(string name)
+        public JsonResult AddRestaurant(RestaurantViewModel model)
         {
-            return Json(name + DateTime.Now, JsonRequestBehavior.AllowGet);
+            string output = "Error";
+
+            if (ModelState.IsValid)
+            {    
+                Task<bool> result = _restaurantService.AddAsync(model);
+                if (result.Result)
+                {
+                    output = "Success";
+                }
+            }
+
+            return Json(output, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult About()

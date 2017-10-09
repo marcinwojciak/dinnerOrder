@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using dinnerOrder.MainWeb.ViewModels;
+using dinnerOrder.Infrastructure.ViewModels;
 
 namespace dinnerOrder.Infrastructure.Services
 {
     public interface IRestaurantService
     {
+        Task<IEnumerable<RestaurantViewModel>> GetAllAsync();
         Task<RestaurantViewModel> GetSingleAsync(string name);
-        Task AddAsync(Restaurant restaurant);
-        Task<IEnumerable<Restaurant>> FindBy(Func<Restaurant, bool> predicate);
+        Task<bool> AddAsync(RestaurantViewModel model);
     }
 }

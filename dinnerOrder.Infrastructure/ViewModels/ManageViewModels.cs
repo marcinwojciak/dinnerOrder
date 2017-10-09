@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace dinnerOrder.MainWeb.ViewModels
+namespace dinnerOrder.Infrastructure.ViewModels
 {
     public class IndexViewModel
     {
@@ -76,11 +76,5 @@ namespace dinnerOrder.MainWeb.ViewModels
         [Phone]
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
-    }
-
-    public class ConfigureTwoFactorViewModel
-    {
-        public string SelectedProvider { get; set; }
-        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
 }
