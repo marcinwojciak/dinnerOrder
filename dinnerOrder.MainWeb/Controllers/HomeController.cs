@@ -33,7 +33,7 @@ namespace dinnerOrder.MainWeb.Controllers
         {
             RestaurantExtendedViewModel exModel = new RestaurantExtendedViewModel();
             exModel.Restaurants = _restaurantService.GetAllAsync();
-            //exModel.CanVote = _restaurantService.CheckIfUserCanVote(User.Identity.Name);
+            exModel.CanVote = _orderService.CheckIfUserCanVote(User.Identity.Name);
             return Json(exModel, JsonRequestBehavior.AllowGet);
         }
 
@@ -68,6 +68,21 @@ namespace dinnerOrder.MainWeb.Controllers
                     output = "Success";
                 }
             }
+
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult RemoveLastOrder()
+        {
+            string output = "Error";
+
+                Task<bool> result = _orderService.RemoveUsersOrderFromTodayAsync(User.Identity.Name);
+
+                if (result.Result)
+                {
+                    output = "Success";
+                }
 
             return Json(output, JsonRequestBehavior.AllowGet);
         }

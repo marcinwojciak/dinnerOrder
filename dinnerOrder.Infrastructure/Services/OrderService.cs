@@ -31,11 +31,25 @@ namespace dinnerOrder.Infrastructure.Services
             return await _orderRepository.AddAsync(order);
         }
 
-        public bool CheckIfUserCanVote(string name)
+        public bool CheckIfUserCanVote(string username)
         {
-            //Metoda pobiera zamówienia z dzisiaj.
             IQueryable<Order> ordersFromToday = _orderRepository.GetAllOrdersFromToday();
-            return true;                                        //.Where(x = x.ApplicationUserName == name);
+            bool response = !ordersFromToday
+                .Any(x => x.ApplicationUser.UserName == username);
+
+            return response;
+        }
+
+        public async Task<bool> RemoveUsersOrderFromTodayAsync(string username)
+        {
+            IQueryable<Order> ordersFromToday = _orderRepository.GetAllOrdersFromToday();
+            Order orderToRemove = ordersFromToday
+                .Where(x => x.ApplicationUser.UserName == username).FirstOrDefault();
+            if(orderToRemove != null)
+            {
+                return await _orderRepository.RemoveAsync(orderToRemove);
+            }
+            return false;
         }
     }
 }

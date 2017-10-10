@@ -2,6 +2,7 @@
     $scope.message = "Herzlich Willkommen";
     $scope.restaurants = [];
     $scope.addedRestaurant = false;
+    $scope.canVote = true;
 
     $scope.getDataTest = function () {
         $http({
@@ -18,7 +19,9 @@
             method: 'GET',
             url: '/Home/GetRestaurantsViewModel',
         }).then(function successCallback(response) {
-            $scope.restaurants = response.data.restaurants;
+            $scope.restaurants = response.data.Restaurants;
+            $scope.canVote = response.data.CanVote;
+            console.log(response.data);
             }, function errorCallback(response) {
                 alert('Data not found'); 
         });
@@ -52,8 +55,24 @@
             console.log(response);
             if (response.data === 'Success') {
                 alert("Dodano pomyślnie zamówienie. Dziękujemy");
+                $scope.canVote = false;
             }
             else { alert("Nie dodano zamówienia: " + response.data); }
+        }, function errorCallback(response) {
+        });
+    };
+
+    $scope.removeLastOrder = function () { ; 
+        $http({
+            method: 'POST',
+            url: '/Home/RemoveLastOrder',
+        }).then(function successCallback(response) {
+            console.log(response);
+            if (response.data === 'Success') {
+                alert("Usunięto pomyślnie dzisiejsze zamówienie. Zagłosuj ponownie");
+                $scope.canVote = true;
+            }
+            else { alert("Nie usunięto zamówienia: " + response.data); }
         }, function errorCallback(response) {
         });
     };

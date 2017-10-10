@@ -28,6 +28,9 @@ namespace dinnerOrder.Infrastructure.Repositories
                     x.DateOfOrder.Value.Day == DateTime.Today.Day);
         }
 
+        public async Task<Order> GetOrderByUserAsync(string userId)
+            => await Task.FromResult(_context.Orders.SingleOrDefault(x => x.ApplicationUserId == userId));
+
         public async Task<Order> GetSingleAsync(Guid id)
             => await Task.FromResult(_context.Orders.SingleOrDefault(x => x.OrderId == id));
 
@@ -36,6 +39,13 @@ namespace dinnerOrder.Infrastructure.Repositories
             return _context.Users.Where(x => x.UserName == name)
                           .Select(x => x.Id)
                           .FirstOrDefault();
+        }
+
+        public async Task<bool> RemoveAsync(Order order)
+        {
+            _context.Orders.Remove(order);
+            int response = _context.SaveChanges();
+            return response >= 1 ? true : false;
         }
     }
 }
