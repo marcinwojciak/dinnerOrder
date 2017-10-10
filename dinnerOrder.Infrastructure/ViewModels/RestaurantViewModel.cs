@@ -10,5 +10,7 @@ namespace dinnerOrder.Infrastructure.ViewModels
         public string Name { get; set; }
 
         public Guid RestaurantId { get; set; }
+
+        public int NumberOfVotes { get; set; }
     }
 }

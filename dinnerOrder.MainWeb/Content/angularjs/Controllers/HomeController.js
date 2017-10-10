@@ -21,6 +21,7 @@
         }).then(function successCallback(response) {
             $scope.restaurants = response.data.Restaurants;
             $scope.canVote = response.data.CanVote;
+            $scope.restaurantsWithMostVotes = response.data.RestaurantWithMostVotes;
             console.log(response.data);
             }, function errorCallback(response) {
                 alert('Data not found'); 

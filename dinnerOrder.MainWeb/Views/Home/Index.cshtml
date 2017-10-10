@@ -3,10 +3,12 @@
 }
 
 <div ng-controller="HomeController">
-    <h1>{{message}}</h1>
-
+    <div class=".col-sm-1">
+        <h1>{{message}}</h1>
+    </div>
     <div>
         <div class=".col-sm-4">
+    @if (User.Identity.IsAuthenticated) { 
             <form name="addRestaurantForm">
                 <button class="btn btn-success" ng-click="addingNewRestaurant()">Dodaj nową restauracje</button>
                 <div ng-show="addedRestaurant" style="margin-top: 40px;">
@@ -15,6 +17,7 @@
                     <code>{{addRestaurantForm.addName.$valid}}</code>
                 </div>
             </form>
+      }
         </div>
         <div class=".col-sm-4">
             @if (User.Identity.IsAuthenticated)
@@ -22,7 +25,15 @@
                 <a href="#" ng-show="!canVote" class="btn btn-sm btn-danger" ng-click="removeLastOrder()">Unvote</a>
             }
         </div>
+        <div ng-init="getDataFromDb()">
+            <h3>Największą ilość głosów zdobyła restauracja
+            {{restaurantsWithMostVotes.Name}} z wynikiem 
+            {{restaurantsWithMostVotes.NumberOfVotes}} głosy</h3>
+        </div>
     </div>
+    @if (Convert.ToDateTime("00:00") <= DateTime.Now
+        && Convert.ToDateTime("12:00") >= DateTime.Now)
+    {
     <table ng-init="getDataFromDb()" class="table table-responsive table-striped">
         <tr ng-repeat="rest in restaurants">
             <td>{{ rest.Name }}</td>
@@ -32,8 +43,8 @@
             }
         </tr>
     </table>
+    }
 </div>
-
 
 
 

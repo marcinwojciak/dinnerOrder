@@ -12,5 +12,6 @@ namespace dinnerOrder.Infrastructure.Services
         Task<bool> AddAsync(OrderViewModel model);
         Task<bool> RemoveUsersOrderFromTodayAsync(string username);
         bool CheckIfUserCanVote(string name);
+        RestaurantWithMostVotes GetRestaurantWithMostVotes();
     }
 }

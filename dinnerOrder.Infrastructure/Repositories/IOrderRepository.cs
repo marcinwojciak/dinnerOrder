@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using dinnerOrder.Infrastructure.ViewModels;
 
 namespace dinnerOrder.Infrastructure.Repositories
 {
@@ -13,5 +14,6 @@ namespace dinnerOrder.Infrastructure.Repositories
         Task<bool> RemoveAsync(Order order);
         string GetUserIdFromUser(string name);
         IQueryable<Order> GetAllOrdersFromToday();
+        RestaurantWithMostVotes GetRestaurantWithMostVotes();
     }
 }

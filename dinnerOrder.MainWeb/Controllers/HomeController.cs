@@ -1,6 +1,5 @@
 ﻿using dinnerOrder.Infrastructure.Services;
 using dinnerOrder.Infrastructure.ViewModels;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -34,6 +33,7 @@ namespace dinnerOrder.MainWeb.Controllers
             RestaurantExtendedViewModel exModel = new RestaurantExtendedViewModel();
             exModel.Restaurants = _restaurantService.GetAllAsync();
             exModel.CanVote = _orderService.CheckIfUserCanVote(User.Identity.Name);
+            exModel.RestaurantWithMostVotes = _orderService.GetRestaurantWithMostVotes();
             return Json(exModel, JsonRequestBehavior.AllowGet);
         }
 

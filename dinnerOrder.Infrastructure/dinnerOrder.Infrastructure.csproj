@@ -113,6 +113,7 @@
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\RestaurantExtendedViewModel.cs" />
     <Compile Include="ViewModels\RestaurantViewModel.cs" />
+    <Compile Include="ViewModels\RestaurantWithMostVotes.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

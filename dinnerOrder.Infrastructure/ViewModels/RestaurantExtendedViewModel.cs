@@ -7,5 +7,6 @@ namespace dinnerOrder.Infrastructure.ViewModels
     {
         public IEnumerable<RestaurantViewModel> Restaurants { get; set; }
         public bool CanVote { get; set; }
+        public RestaurantWithMostVotes RestaurantWithMostVotes { get;set;}
     }
 }

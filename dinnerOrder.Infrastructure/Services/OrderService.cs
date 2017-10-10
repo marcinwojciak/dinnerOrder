@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using dinnerOrder.Infrastructure.ViewModels;
 using dinnerOrder.Infrastructure.Entities;
 using dinnerOrder.Infrastructure.Repositories;
-using AutoMapper;
 
 namespace dinnerOrder.Infrastructure.Services
 {
@@ -38,6 +36,12 @@ namespace dinnerOrder.Infrastructure.Services
                 .Any(x => x.ApplicationUser.UserName == username);
 
             return response;
+        }
+
+        public RestaurantWithMostVotes GetRestaurantWithMostVotes()
+        {
+            RestaurantWithMostVotes output = _orderRepository.GetRestaurantWithMostVotes();
+            return output;
         }
 
         public async Task<bool> RemoveUsersOrderFromTodayAsync(string username)

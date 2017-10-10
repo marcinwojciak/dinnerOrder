@@ -29,7 +29,7 @@ namespace dinnerOrder.MainWeb
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/style.scss"));
+                      "~/Content/style.css"));
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using dinnerOrder.Infrastructure.ViewModels;
 
 namespace dinnerOrder.Infrastructure.Repositories
 {
@@ -30,6 +31,17 @@ namespace dinnerOrder.Infrastructure.Repositories
 
         public async Task<Order> GetOrderByUserAsync(string userId)
             => await Task.FromResult(_context.Orders.SingleOrDefault(x => x.ApplicationUserId == userId));
+
+        public RestaurantWithMostVotes GetRestaurantWithMostVotes()
+        {
+            var output =_context.Database
+                .SqlQuery<RestaurantWithMostVotes>(@"SELECT TOP(1) RestaurantId, Count(OrderId) as NumberOfVotes, (Select Name FROM Restaurants WHERE RestaurantId = o.RestaurantId) as Name
+                                                     FROM [DinnerOrder].[dbo].[Orders] as o
+                                                     GROUP BY o.RestaurantId
+                                                     Order By NumberOfVotes DESC").FirstOrDefault();
+
+            return output;
+        }
 
         public async Task<Order> GetSingleAsync(Guid id)
             => await Task.FromResult(_context.Orders.SingleOrDefault(x => x.OrderId == id));
