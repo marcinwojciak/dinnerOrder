@@ -9,6 +9,7 @@ namespace dinnerOrder.Infrastructure.Entities
     public class ApplicationUser : IdentityUser
     {
         public ICollection<Order> Orders { get; set; }
+        public ICollection<FoodOrder> FoodOrders { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

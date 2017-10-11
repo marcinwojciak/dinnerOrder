@@ -16,5 +16,7 @@ namespace dinnerOrder.Infrastructure.Entities
         public string Name { get; set; }
 
         public ICollection<Order> Orders { get; set; }
+
+        public ICollection<FoodOrder> FoodOrders { get; set; }
     }
 }

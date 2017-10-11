@@ -19,12 +19,14 @@ namespace dinnerOrder.Infrastructure.Modules
         private void ConfigureServices(ContainerBuilder builder)
         {
             builder.RegisterType<RestaurantService>().As<IRestaurantService>().InstancePerDependency();
+            builder.RegisterType<FoodOrderService>().As<IFoodOrderService>().InstancePerDependency();
             builder.RegisterType<OrderService>().As<IOrderService>().InstancePerDependency();
         }
 
         private void ConfigureRepositories(ContainerBuilder builder)
         {
             builder.RegisterType<RestaurantRepository>().As<IRestaurantRepository>().InstancePerDependency();
+            builder.RegisterType<FoodOrderRepository>().As<IFoodOrderRepository>().InstancePerDependency();
             builder.RegisterType<OrderRepository>().As<IOrderRepository>().InstancePerDependency();
         }
 

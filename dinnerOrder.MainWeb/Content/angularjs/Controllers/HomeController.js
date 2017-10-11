@@ -48,6 +48,23 @@
         });
     };
 
+    $scope.addFoodOrder = function (restId) {
+        var model = { model: { RestaurantId: restId, FoodOrderName: $scope.foodOrderName } };
+        console.log(model);
+        $http({
+            method: 'POST',
+            url: '/Home/AddFoodOrder',
+            data: JSON.stringify(model),
+        }).then(function successCallback(response) {
+            console.log(response);
+            if (response.data === 'Success') {
+                alert("Dodano pomyślnietwoje zamównienie.");
+            }
+            else { alert("Nie dodano zamównienia: " + response.data); }
+        }, function errorCallback(response) {
+        });
+    };
+
     $scope.addNewOrder = function (restId) {
         var model = { model: { RestaurantId: restId } };
         console.log(model);

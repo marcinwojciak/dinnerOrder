@@ -37,6 +37,7 @@ namespace dinnerOrder.Infrastructure.Repositories
             var output =_context.Database
                 .SqlQuery<RestaurantWithMostVotes>(@"SELECT TOP(1) RestaurantId, Count(OrderId) as NumberOfVotes, (Select Name FROM Restaurants WHERE RestaurantId = o.RestaurantId) as Name
                                                      FROM [DinnerOrder].[dbo].[Orders] as o
+                                                     WHERE Convert(varchar(10),o.DateOfOrder,120) = CONVERT(varchar(10),GETDATE(),120)
                                                      GROUP BY o.RestaurantId
                                                      Order By NumberOfVotes DESC").FirstOrDefault();
 

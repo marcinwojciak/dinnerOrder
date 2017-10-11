@@ -7,6 +7,7 @@ namespace dinnerOrder.Infrastructure.Entities
     {
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Restaurant> Restaurants { get; set; }
+        public virtual DbSet<FoodOrder> FoodOrders { get; set; }
 
         public ApplicationDbContext()
            : base("DefaultConnection", throwIfV1Schema: false)
