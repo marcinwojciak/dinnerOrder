@@ -2,70 +2,96 @@
     ViewBag.Title = "Home Page";
 
     var start = Convert.ToDateTime("00:00");
-    var end = Convert.ToDateTime("15:00");
+    var end = Convert.ToDateTime("14:00");
     bool restIsChoosen = end >= DateTime.Now && DateTime.Now >= start;
 }
 
 
 
 <div ng-controller="HomeController">
-    <div class=".col-sm-1">
-        @if (!User.Identity.IsAuthenticated)
-        {
-            <h1 id="#mainTitle">{{message}}</h1>
-        } 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <h1 id="mainTitle">{{message}}</h1>
+                }
+            </div>
+            <div id="addRestaurant" class=".col-md-6">
+                @if (User.Identity.IsAuthenticated) {
+                <form name="addRestaurantForm">
+                    <button class="btn btn-success" ng-click="addingNewRestaurant()">Dodaj nową restauracje</button>
+                    <div ng-show="addedRestaurant" style="margin-top: 40px;">
+                        <input ng-model="name" type="text" name="addName" value="" ng-minlength="5" required />
+                        <button class="btn btn-primary" ng-click="addDataTest()">Zapisz restauracje</button>
+                        <code>{{addRestaurantForm.addName.$valid}}</code>
+                    </div>
+                </form>
+                }
+            </div>
+            <div id="remRestaurant" class=".col-md-6">
+                @if (User.Identity.IsAuthenticated && restIsChoosen) {
+                    <a href="#" ng-show="!canVote" class="btn btn-sm btn-danger" ng-click="removeLastOrder()">Cofnij</a>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @if (!restIsChoosen) {
+                    <div ng-init="getDataFromDb()">
+                        <h3 id="restOfDay">
+                            Dnia {{currentDate | date:'yyyy-MM-dd'}}
+                            największą ilość głosów zdobyła restauracja
+                            {{restaurantsWithMostVotes.Name}} z wynikiem
+                            {{restaurantsWithMostVotes.NumberOfVotes}} głosy
+                        </h3>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <h3 id="restOfDay">Zaloguj się aby wybrać danie dla siebie.</h3>
+                        }
+                    </div>
+                    <div ng-if="!restaurantsWithMostVotes.NumberOfVotes">
+                        <h3 id="restOfDay">
+                            Dnia {{currentDate | date:'yyyy-MM-dd'}} nie wybrano żadenej restauracji.
+                        </h3>
+                    </div>
+                    <div id="addFood">
+                        @if (User.Identity.IsAuthenticated) {
+                            <input class="form-control" ng-model="foodOrderName" type="text" value="" />
+                            <button class="btn btn-warning"
+                                    ng-click="addFoodOrder(restaurantsWithMostVotes.RestaurantId)">
+                                Zapisz swoje zamówienie
+                            </button>
+                        }
+                    </div>
+                }
+            </div>
+            <div>
+                @if (restIsChoosen)
+                {
+                    <table ng-init="getDataFromDb()" class="table table-responsive table-striped">
+                        <thead>
+                            <tr>
+                                <th>Restaurants</th>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <th></th>
+                                    }
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="rest in restaurants">
+                                <td>{{ rest.Name }}</td>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <td><a href="#" class="btn btn-sm btn-primary {{canVote ? '' : 'disabled'}}" 
+                                           ng-click="addNewOrder(rest.RestaurantId)">Zagłosuj</a></td>
+                                }
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </div>
     </div>
-        @if (User.Identity.IsAuthenticated) {
-        <div class=".col-sm-4">
-            <form name="addRestaurantForm">
-                <button class="btn btn-success" ng-click="addingNewRestaurant()">Dodaj nową restauracje</button>
-                <div ng-show="addedRestaurant" style="margin-top: 40px;">
-                    <input ng-model="name" type="text" name="addName" value="" ng-minlength="5" required />
-                    <button class="btn btn-primary" ng-click="addDataTest()">Zapisz restauracje</button>
-                    <code>{{addRestaurantForm.addName.$valid}}</code>
-                </div>
-            </form>
-        </div>
-        }
-        <div class=".col-sm-4">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <a href="#" ng-show="!canVote" class="btn btn-sm btn-danger" ng-click="removeLastOrder()">Unvote</a>
-            }
-        </div>
-        <div>
-            @if (!restIsChoosen)
-            {
-                <div  ng-init="getDataFromDb()" >
-                    <h3 id="restOfDay">Dnia {{currentDate | date:'yyyy-MM-dd'}}
-                     największą ilość głosów zdobyła restauracja
-                     {{restaurantsWithMostVotes.Name}} z wynikiem 
-                     {{restaurantsWithMostVotes.NumberOfVotes}} głosy</h3>
-                </div>
-                <div ng-if="!restaurantsWithMostVotes.NumberOfVotes">
-                    <h3 id="restOfDay">
-                       Dnia {{currentDate | date:'yyyy-MM-dd'}} nie wybrano żadenej restauracji.
-                    </h3>
-                </div>
-                <div>
-                    <input ng-model="foodOrderName" type="text" value=""/>
-                    <button class="btn btn-warning" 
-                            ng-click="addFoodOrder(restaurantsWithMostVotes.RestaurantId)">
-                            Zapisz restauracje</button>
-                </div>
-            }
-        </div>
-    @if (restIsChoosen) {
-        <div>
-            <table ng-init="getDataFromDb()" class="table table-responsive table-striped">
-                <tr ng-repeat="rest in restaurants">
-                    <td>{{ rest.Name }}</td>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <td><a href="#" class="btn btn-sm btn-primary {{canVote ? '' : 'disabled'}}" ng-click="addNewOrder(rest.RestaurantId)">Vote</a></td>
-                    }
-                </tr>
-            </table>
-        </div>
-    }
 </div>

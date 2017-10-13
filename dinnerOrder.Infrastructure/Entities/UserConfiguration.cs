@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Metadata.Edm;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace dinnerOrder.Infrastructure.Entities
 {
@@ -15,6 +10,7 @@ namespace dinnerOrder.Infrastructure.Entities
             ToTable("dbo.AspNetUsers");
 
             HasMany(x => x.Orders)
+              
                 .WithRequired(x => x.ApplicationUser)
                 .HasForeignKey(x => x.ApplicationUserId);
 

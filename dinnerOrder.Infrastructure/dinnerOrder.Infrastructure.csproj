@@ -102,6 +102,10 @@
     <Compile Include="Migrations\201710101310475_AddFoodOrderModel.Designer.cs">
       <DependentUpon>201710101310475_AddFoodOrderModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710131052409_FoodOrderId.cs" />
+    <Compile Include="Migrations\201710131052409_FoodOrderId.Designer.cs">
+      <DependentUpon>201710131052409_FoodOrderId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modules\AutofacModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -151,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710101310475_AddFoodOrderModel.resx">
       <DependentUpon>201710101310475_AddFoodOrderModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710131052409_FoodOrderId.resx">
+      <DependentUpon>201710131052409_FoodOrderId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

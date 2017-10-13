@@ -1,5 +1,5 @@
 ﻿app.controller("HomeController", function ($scope, $http) {
-    $scope.message = "Herzlich Willkommen";
+    $scope.message = "Witaj. Zarejestruj się aby móc zagłosować na wybraną restaurację.";
     $scope.restaurants = [];
     $scope.addedRestaurant = false;
     $scope.canVote = true;

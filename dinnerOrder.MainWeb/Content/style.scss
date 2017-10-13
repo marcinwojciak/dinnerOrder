@@ -23,15 +23,108 @@ textarea {
     max-width: 280px;
 }
 
+.btn{
+    font-size: 16px;
+}
+
 #mainTitle{
-    margin: auto;
     text-align: center;
-    font-size: 100px;
+    font-size: 30px;
     margin-top: 40px;
     margin-bottom: 40px;
 }
 
 #restOfDay {
-    margin: auto;
+    margin-top: 50px;
     text-align: center;
+}
+
+#addRestaurant {
+    float: left;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-right: 60px;
+}
+
+#remRestaurant {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/*Navbar styles*/
+.navbar {
+    background-color: #9932CC;
+    border-bottom: 2px solid #8B008B;
+    .navbar-header {
+        height: 50px;
+
+        .navbar-brand {
+            color: #fff;
+        }
+
+        .navbar-brand:hover {
+            background-color: #8B008B;
+        }
+    }
+
+    .navbar-collapse {
+        .nav {
+            li {
+                a {
+                    color: #fff;
+                }
+            }
+
+            li:hover {
+                background-color: #8B008B;
+            }
+        }
+    }
+}
+
+/*Table styles*/
+table {
+    margin: auto;
+    width: 200px;
+    border-collapse: collapse;
+    border: 1px solid #fff; /*for older IE*/
+    border-style: hidden;
+
+    thead {
+        background-color: #9932CC;
+        border: 2px solid #8B008B;
+        border-radius: 8px;
+
+        tr {
+            th {
+                color: #fff;
+                font-size: 15px;
+                text-align: center;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            td {
+                font-size: 15px;
+                text-align: center;
+            }
+        }
+
+        tr:hover {
+            background-color: #BA55D3;
+        }
+    }
+}
+
+#addFood {
+    height: auto;
+    margin-top: 40px;
+    margin-left: 280px;;
+}
+
+.form-control{
+    float: left;
+    margin-right: 20px;
 }
