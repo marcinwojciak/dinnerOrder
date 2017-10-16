@@ -24,7 +24,6 @@ namespace dinnerOrder.Infrastructure.Services
         {
             var foodOrder = new FoodOrder
             {
-                Id = Guid.NewGuid(),
                 FoodName = model.FoodOrderName,
                 RestaurantId = model.RestaurantId,
             };

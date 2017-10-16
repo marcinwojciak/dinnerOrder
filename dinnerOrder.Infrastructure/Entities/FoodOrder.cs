@@ -8,7 +8,7 @@ namespace dinnerOrder.Infrastructure.Entities
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public Guid Id { get; set; }
+        public Guid FoodOrderId { get; set; }
         public string FoodName { get; set; }
         public Guid RestaurantId { get; set; }
         public Restaurant Restaurant { get; set; }
