@@ -13,7 +13,8 @@ namespace dinnerOrder.MainWeb
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
             "~/Scripts/angular.min.js",
             "~/Content/angularjs/app.js",
-            "~/Content/angularjs/Controllers/HomeController.js"));
+            "~/Content/angularjs/Controllers/HomeController.js",
+            "~/Content/angularjs/Controllers/LoginController.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

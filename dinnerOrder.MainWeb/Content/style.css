@@ -44,7 +44,7 @@ textarea {
 
 /*Navbar styles*/
 .navbar {
-  background-color: #9932CC;
+  background-color: rgba(52, 73, 94, 0.7);
   border-bottom: 2px solid #8B008B; }
   .navbar .navbar-header {
     height: 50px; }
@@ -66,7 +66,7 @@ table {
   /*for older IE*/
   border-style: hidden; }
   table thead {
-    background-color: #9932CC;
+    background-color: rgba(52, 73, 94, 0.7);
     border: 2px solid #8B008B;
     border-radius: 8px; }
     table thead tr th {
@@ -87,4 +87,79 @@ table {
 .form-control {
   float: left;
   margin-right: 20px; }
+
+/*Login form*/
+.logForm {
+  width: 500px;
+  height: 400px;
+  text-align: center;
+  background-color: rgba(52, 73, 94, 0.7);
+  border-radius: 6px;
+  margin: 0 auto; }
+  .logForm .form-group span {
+    color: red; }
+  .logForm h3 {
+    color: #fff; }
+  .logForm .form-control {
+    height: 45px;
+    width: 300px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 110px;
+    padding-left: 20px; }
+    .logForm .form-control .btn {
+      padding: 15px 25px;
+      font-size: 20px; }
+
+.checkbox {
+  margin-left: 90px; }
+
+button, html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+  margin-left: 90px; }
+
+.radio input[type="radio"],
+.radio-inline input[type="radio"],
+.checkbox input[type="checkbox"],
+.checkbox-inline input[type="checkbox"] {
+  float: none !important; }
+
+a {
+  color: #fff; }
+
+#logBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center; }
+
+/*Register form*/
+.regForm {
+  width: 500px;
+  height: 400px;
+  text-align: center;
+  background-color: rgba(52, 73, 94, 0.7);
+  border-radius: 6px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center; }
+  .regForm h3 {
+    padding-top: 20px;
+    color: #fff; }
+  .regForm h4 {
+    color: #fff; }
+  .regForm .col-md-10 {
+    width: 100%; }
+  .regForm .form-control {
+    margin-left: 110px; }
+  .regForm .col-md-offset-2 {
+    margin-left: 0; }
+  .regForm input[type="submit"] {
+    text-align: center;
+    margin-left: 0; }
 

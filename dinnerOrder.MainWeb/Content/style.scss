@@ -23,11 +23,11 @@ textarea {
     max-width: 280px;
 }
 
-.btn{
+.btn {
     font-size: 16px;
 }
 
-#mainTitle{
+#mainTitle {
     text-align: center;
     font-size: 30px;
     margin-top: 40px;
@@ -53,8 +53,9 @@ textarea {
 
 /*Navbar styles*/
 .navbar {
-    background-color: #9932CC;
+    background-color: rgba(52, 73, 94, 0.7);
     border-bottom: 2px solid #8B008B;
+
     .navbar-header {
         height: 50px;
 
@@ -91,7 +92,7 @@ table {
     border-style: hidden;
 
     thead {
-        background-color: #9932CC;
+        background-color: rgba(52, 73, 94, 0.7);
         border: 2px solid #8B008B;
         border-radius: 8px;
 
@@ -121,10 +122,118 @@ table {
 #addFood {
     height: auto;
     margin-top: 40px;
-    margin-left: 280px;;
+    margin-left: 280px;
+    ;
 }
 
-.form-control{
+.form-control {
     float: left;
     margin-right: 20px;
+}
+
+
+/*Login form*/
+.logForm {
+    width: 500px;
+    height: 400px;
+    text-align: center;
+    background-color: rgba(52, 73, 94, 0.7);
+    border-radius: 6px;
+    margin: 0 auto;
+
+    .form-group{
+        span{
+            color: red;
+        }
+    }
+
+    h3 {
+        color: #fff;
+    }
+
+    .form-control {
+        height: 45px;
+        width: 300px;
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 110px;
+        padding-left: 20px;
+
+        .btn {
+            padding: 15px 25px;
+            font-size: 20px;
+        }
+    }
+}
+
+.checkbox{
+    margin-left: 90px;
+}
+
+button, html input[type="button"], 
+input[type="reset"], 
+input[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+    margin-left: 90px;
+
+}
+
+    .radio input[type="radio"],
+    .radio-inline input[type="radio"],
+    .checkbox input[type="checkbox"],
+    .checkbox-inline input[type="checkbox"] {
+        float: none !important;
+    }
+
+    a {
+        color: #fff;
+    }
+
+    #logBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+/*Register form*/
+
+.regForm {
+    width: 500px;
+    height: 400px;
+    text-align: center;
+    background-color: rgba(52, 73, 94, 0.7);
+    border-radius: 6px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    h3 {
+        padding-top: 20px;
+        color: #fff;
+    }
+
+    h4 {
+        color: #fff;
+    }
+
+    .col-md-10 {
+        width: 100%;
+    }
+
+    .form-control {
+        margin-left: 110px;
+    }
+
+    .col-md-offset-2 {
+        margin-left: 0;
+    }
+
+    input[type="submit"] {
+        text-align: center;
+        margin-left: 0;
+    }
 }

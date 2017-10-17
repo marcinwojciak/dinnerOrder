@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 
     var start = Convert.ToDateTime("00:00");
-    var end = Convert.ToDateTime("08:00");
+    var end = Convert.ToDateTime("14:00");
     bool restIsChoosen = end >= DateTime.Now && DateTime.Now >= start;
 }
 
@@ -24,7 +24,7 @@
                     <div ng-show="addedRestaurant" style="margin-top: 40px;">
                         <input ng-model="name" type="text" name="addName" value="" ng-minlength="5" required />
                         <button class="btn btn-primary" ng-click="addDataTest()">Zapisz restauracje</button>
-                        <code>{{addRestaurantForm.addName.$valid}}</code>
+                        <span ng-if="!addRestaurantForm.addName.$valid && addRestaurantForm.addName.$dirty">Restauracja musi mieć min. 5 znaków.</span>
                     </div>
                 </form>
                 }
